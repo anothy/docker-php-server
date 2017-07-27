@@ -30,7 +30,9 @@ RUN apk update && \
       mcrypt && \
     apk del autoconf alpine-sdk && \
     rm -rf /var/cache/apk/* && \
-    rm -rf /tmp/*
+    rm -rf /tmp/* && \
+    mkdir -p /run/apache2 && \
+    chown www-data:www-data /run/apache2
 
 #
 # Copy php.ini
