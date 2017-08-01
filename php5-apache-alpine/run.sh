@@ -34,6 +34,8 @@ if [ "${XDEBUG}" = "true" ] || [ "${XDEBUG}" = 1 ] || [[ "${XDEBUG}" ]]; then
   echo "xdebug.remote_connect_back=0" >> $XDEBUG_INI
   echo "xdebug.idekey=docker"  >> $XDEBUG_INI
   echo "xdebug.remote_host=${XDEBUG_REMOTE_HOST}" >> $XDEBUG_INI
+  echo "xdebug.profiler_enable=1" >> $XDEBUG_INI
+  echo "xdebug.profiler_enable_trigger=1" >> $XDEBUG_INI
   mv /etc/apache2/conf.d/proxy_timeout.conf.disabled /etc/apache2/conf.d/proxy_timeout.conf
 else
   #
@@ -45,7 +47,7 @@ fi
 #
 # Show errors if in Development Mode (DEVMODE).
 #
-if [ ! -f /usr/local/etc/php/php.ini ]; then
+if [ -f /usr/local/etc/php/php.ini ]; then
   rm /usr/local/etc/php/php.ini
 fi
 
@@ -54,6 +56,8 @@ if [ "${DEVMODE}" = "true" ] || [ "${DEVMODE}" = 1 ] || [[ "${DEVMODE}" ]]; then
 else
   cp /php_inis/php.ini.devmode-off /usr/local/etc/php/php.ini
 fi
+
+chown -R www-data:www-data /var/www/locahost/htdocs
 
 #
 # Run Apache

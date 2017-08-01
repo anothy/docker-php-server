@@ -154,3 +154,5 @@ report_memleaks = On
 ; Production Value: Off
 ; http://php.net/track-errors
 track_errors = Off
+
+date.timezone = "America/Toronto"
