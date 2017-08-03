@@ -34,8 +34,23 @@ if [ "${XDEBUG}" = "true" ] || [ "${XDEBUG}" = 1 ] || [[ "${XDEBUG}" ]]; then
   echo "xdebug.remote_connect_back=0" >> $XDEBUG_INI
   echo "xdebug.idekey=docker"  >> $XDEBUG_INI
   echo "xdebug.remote_host=${XDEBUG_REMOTE_HOST}" >> $XDEBUG_INI
-  echo "xdebug.profiler_enable=1" >> $XDEBUG_INI
+
+  echo "xdebug.profiler_enable=0" >> $XDEBUG_INI
   echo "xdebug.profiler_enable_trigger=1" >> $XDEBUG_INI
+  echo "xdebug.profiler_enable_trigger_value=\"slowpoke\"" >> $XDEBUG_INI
+  echo "xdebug.profiler_output_dir=\"/tmp/xdebug/profiler_output_dir\"" >> $XDEBUG_INI
+
+  echo "xdebug.trace_enable_trigger=1" >> $XDEBUG_INI
+  echo "xdebug.trace_enable_trigger_value=\"dicktracey\"" >> $XDEBUG_INI
+  echo "xdebug.trace_output_dir=\"/tmp/xdebug/trace_output_dir\"" >> $XDEBUG_INI
+  echo "xdebug.collect_params=1" >> $XDEBUG_INI
+  echo "xdebug.collect_return=1" >> $XDEBUG_INI
+  echo "xdebug.show_mem_delta=1" >> $XDEBUG_INI
+
+  mkdir -p /tmp/xdebug/profiler_output_dir
+  mkdir -p /tmp/xdebug/trace_output_dir
+  chown -R www-data:www-data /tmp/xdebug
+
   mv /etc/apache2/conf.d/proxy_timeout.conf.disabled /etc/apache2/conf.d/proxy_timeout.conf
 else
   #
