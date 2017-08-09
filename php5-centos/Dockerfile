@@ -82,6 +82,11 @@ COPY entrypoint.sh /entrypoint.sh
 COPY composer.phar /usr/local/bin/composer
 
 #
+# Make scripts executable
+#
+RUN chmod +x /setup.sh && chmod +x entrypoint.sh
+
+#
 # Set working directory
 #
 WORKDIR /var/www/html

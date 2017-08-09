@@ -64,6 +64,11 @@ COPY run.sh /run.sh
 COPY entrypoint.sh /entrypoint.sh
 
 #
+# Make scripts executable
+#
+RUN chmod +x /setup.sh && chmod +x /run.sh && chmod +x /entrypoint.sh
+
+#
 # Expose port 80
 #
 EXPOSE 80
