@@ -1,8 +1,6 @@
 #!/bin/sh
 
 #
-<<<<<<< HEAD
-=======
 # Update Apache's DocumentRoot
 #
 if [[ "$DOCROOT" ]]; then
@@ -76,7 +74,6 @@ fi
 chown -R www-data:www-data /var/www/locahost/htdocs
 
 #
->>>>>>> 94f80c54bde57bcad6a570c5647987c511fd137b
 # Run Apache
 #
 apachectl -DBACKGROUND
