@@ -2,9 +2,12 @@ FROM php:5-fpm-alpine
 
 LABEL Description="PHP 5.6 FPM Alpine and Apache 2.4 Alpine"
 
+<<<<<<< HEAD
 ARG xdebug=0
 ARG devmode=0
 
+=======
+>>>>>>> 94f80c54bde57bcad6a570c5647987c511fd137b
 #
 # Install
 # - Apache2 and Apache2 modes
@@ -53,6 +56,7 @@ COPY config/slotmem_shm.conf /etc/apache2/conf.d/slotmem_shm.conf
 COPY config/proxy_timeout.conf /etc/apache2/conf.d/proxy_timeout.conf.disabled
 
 #
+<<<<<<< HEAD
 # setup.sh setups up the
 #
 COPY setup.sh /setup.sh
@@ -62,6 +66,11 @@ COPY run.sh /run.sh
 # Copy the entrypoint script
 #
 COPY entrypoint.sh /entrypoint.sh
+=======
+# Copy the entrypoint script
+#
+COPY run.sh /run.sh
+>>>>>>> 94f80c54bde57bcad6a570c5647987c511fd137b
 
 #
 # Expose port 80
@@ -73,6 +82,7 @@ EXPOSE 80
 #
 WORKDIR /var/www/localhost/htdocs/
 
+<<<<<<< HEAD
 ENV XDEBUG=${xdebug}
 ENV DEVMODE=${devmode}
 
@@ -80,3 +90,9 @@ ENV DEVMODE=${devmode}
 # Set entrypoint
 #
 ENTRYPOINT ["/entrypoint.sh"]
+=======
+#
+# Set entrypoint
+#
+ENTRYPOINT ["/run.sh"]
+>>>>>>> 94f80c54bde57bcad6a570c5647987c511fd137b
