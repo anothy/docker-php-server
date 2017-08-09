@@ -19,7 +19,7 @@ fi
 # Update the xdebug.enabled and xdebug.remote_host in xdebug.ini.
 #
 XDEBUG_INI="/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini"
-if [ "${XDEBUG}" = "true" ] || [ "${XDEBUG}" = 1 ] || [[ "${XDEBUG}" ]]; then
+if [ "${XDEBUG}" = 1 ]; then
   #
   # Enable XDebug
   #
@@ -66,7 +66,7 @@ if [ -f /usr/local/etc/php/php.ini ]; then
   rm /usr/local/etc/php/php.ini
 fi
 
-if [ "${DEVMODE}" = "true" ] || [ "${DEVMODE}" = 1 ] || [[ "${DEVMODE}" ]]; then
+if [ "${DEVMODE}" = 1 ]; then
   cp /php_inis/php.ini.devmode-on /usr/local/etc/php/php.ini
 else
   cp /php_inis/php.ini.devmode-off /usr/local/etc/php/php.ini
