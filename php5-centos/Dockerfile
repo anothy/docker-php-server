@@ -72,6 +72,11 @@ COPY ./conf/httpd/httpd.conf /etc/httpd/conf/httpd.conf
 COPY ./setup.sh /setup.sh
 
 #
+# Setup Run
+#
+COPY ./run.sh /run.sh
+
+#
 # Entry Point Script
 #
 COPY entrypoint.sh /entrypoint.sh
@@ -84,7 +89,7 @@ COPY composer.phar /usr/local/bin/composer
 #
 # Make scripts executable
 #
-RUN chmod +x /setup.sh && chmod +x entrypoint.sh
+RUN chmod +x /setup.sh && chmod +x /run.sh && chmod +x /entrypoint.sh
 
 #
 # Set working directory

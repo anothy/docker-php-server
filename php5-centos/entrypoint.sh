@@ -1,11 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
-#
-# Run the setup
-#
 /setup.sh
 
-#
-# Start Apache in the foreground
-#
-apachectl -DFOREGROUND
+if [ $# -eq 0 ]; then
+
+  /run.sh
+
+else
+
+  exec "$@"
+
+fi
